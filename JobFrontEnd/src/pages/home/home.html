@@ -5,6 +5,17 @@
 </ion-header>
 
 <ion-content padding>
+
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Carregando...">
+        </ion-refresher-content>
+      </ion-refresher>
+
   <ion-card *ngFor="let job of ListJobs">
     <ion-item>
       <ion-label>{{job.name}}</ion-label>
@@ -24,6 +35,6 @@
                 e peso <b>{{task.weight}}</b><hr>
         </ion-card-content>
     </ion-card-content>
-    <button ion-button color="danger" (click)="deletarJob(job)">Deletar</button>
+    <button ion-button color="danger" full (click)="deletarJob(job)">Deletar</button>
   </ion-card>
 </ion-content>

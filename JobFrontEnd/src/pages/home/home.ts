@@ -14,9 +14,26 @@ export class HomePage {
     public navCtrl: NavController,
     public jobProvider:JobProvider,
     public alertController: AlertController) {
+  }
 
-      this.carregarJobs();
+  ngOnInit(){
+    this.carregarJobs();
+  }
 
+  doRefresh(refresher) {
+    this.jobProvider.listarJob().subscribe(
+      data => {
+          this.ListJobs = data;
+          refresher.complete();
+      }, error => {
+        this.presentAlert();
+        console.log(error);
+      });
+    
+  }
+
+  ionViewWillEnter(){
+    this.carregarJobs();
   }
 
   carregarJobs(){

@@ -3,25 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
-  Generated class for the JobProvider provider.
+  Generated class for the TaskProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class JobProvider {
+export class TaskProvider {
 
   constructor(public api: ApiProvider,public  http: HttpClient) {
-    console.log('Hellao JobProvider Provider');
+    console.log('Hello JobProvider Provider');
   }
 
-  salvarJob(body:any){
-      let requisicao = this.api.post("job", body);
-      return requisicao;
-  }
-
-  listarJob(){
-    let requisicao = this.api.get("job");
+  listarTasks(){
+    let requisicao = this.api.get("task");
     return requisicao;
   }
 
@@ -29,5 +24,6 @@ export class JobProvider {
     let requisicao = this.api.post("job/deletar", body);
     return requisicao;
   }
+
 
 }

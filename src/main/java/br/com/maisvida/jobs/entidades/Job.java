@@ -23,15 +23,13 @@ public class Job implements Serializable{
 	String name;
 	Boolean active;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "parentJob")
 	List<Job> parentJob;
 	
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy="job")
+	@OneToMany(cascade = CascadeType.MERGE, mappedBy="job")
 	@JsonIgnore
 	List<Task> tasks;
-	
-	
 
 	public Job() {};
 	public Job(Long id, String name, Boolean active, List<Job> parentJob, List<Task> tasks) {

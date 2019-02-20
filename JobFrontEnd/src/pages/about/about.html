@@ -12,17 +12,25 @@
           <ion-input type="text" [(ngModel)]="job.name" name="title"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label>Description</ion-label>
-          <ion-input type="text" [(ngModel)]="job.name" name="title"></ion-input>
-        </ion-item>
-        <ion-item>
             <ion-label>Estado</ion-label>
             <ion-select [(ngModel)]="job.active">
               <ion-option value="true">Ativado</ion-option>
               <ion-option value="false">Desativado</ion-option>
             </ion-select>
         </ion-item>         
-
+      <ion-item>
+          <ion-label>ParentJob</ion-label>
+          <ion-select [(ngModel)]="job.parentJob" name="ParentJOB"  (click)="carregarJobs()">
+            <ion-option *ngFor="let jobs of listJobs" value="{{jobs.id}}" >{{jobs.name}}</ion-option>
+          </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label>Task</ion-label>
+          <ion-select [(ngModel)]="job.tasks" name="Tasks" (click)="carregarTaslk()" multiple="true">
+            <ion-option *ngFor="let tasks of listTasks" value="{{tasks.id}}">{{tasks.name}}</ion-option>
+          </ion-select>
+      </ion-item>
+      <button ion-button color="default" full (click)="criarJob()">Criar Job</button>
 </ion-content>
 
 

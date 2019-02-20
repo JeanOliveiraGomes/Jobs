@@ -51,6 +51,10 @@ public class JobService {
 	}
 	
 	public JobDTO deletarJob(JobDTO jobDTO) {
+		for (Task task : jobDTO.getTasks()) {
+			task.setJob(null);
+			taskRep.save(task);
+		}
 		jobRep.delete(jobRep.findByName(jobDTO.getName()));
 		return jobDTO;
 	}
@@ -63,6 +67,8 @@ public class JobService {
 			taskRep.save(task);
 		}
 	}
+	
+
 	
 	private void setarDataCriacao(JobDTO jobDTO) {
 		if (!jobDTO.getTasks().isEmpty()) {

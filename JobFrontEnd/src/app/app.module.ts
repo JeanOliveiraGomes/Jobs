@@ -14,6 +14,7 @@ import { ApiProvider } from '../providers/api/api';
 import { JobProvider } from '../providers/job/job';
 import { ServicoProvider } from '../providers/servico/servico';
 import { HttpClientModule } from '@angular/common/http';
+import { TaskProvider } from '../providers/task/task';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiProvider,
     JobProvider,
-    ServicoProvider
+    ServicoProvider,
+    TaskProvider
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
