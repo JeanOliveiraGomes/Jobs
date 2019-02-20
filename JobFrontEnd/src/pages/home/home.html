@@ -1,17 +1,29 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>JOBS</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-card *ngFor="let job of ListJobs">
+    <ion-item>
+      <ion-label>{{job.name}}</ion-label>
+    </ion-item>
+  
+    <ion-card-content>
+        Activated: {{job.active}}<br>
+
+        <ion-label *ngIf="job.parentJob.length > 0">Parents: </ion-label>
+        <ion-card-content *ngFor="let parent of job.parentJob">
+          <hr>ParentJob <b>{{parent.name}}</b>, com estado ativado <b>{{parent.active}}</b><hr>
+        </ion-card-content>
+
+        <ion-label *ngIf="job.tasks.length > 0">TASKS: </ion-label>
+              <ion-card-content *ngFor="let task of job.tasks">
+                <hr>Task <b>{{task.name}}</b>, criado em <b>{{task.createdAt}}</b>, com estado completado <b>{{task.completed}}</b>
+                e peso <b>{{task.weight}}</b><hr>
+        </ion-card-content>
+    </ion-card-content>
+    <button ion-button color="danger" (click)="deletarJob(job)">Deletar</button>
+  </ion-card>
 </ion-content>

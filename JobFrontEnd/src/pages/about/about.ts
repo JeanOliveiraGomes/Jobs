@@ -7,8 +7,18 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
 
+  job = {
+    name:"",
+    active:false,
+    parentJob:null,
+    tasks:null
+   }
+   selecionado = true;
   constructor(public navCtrl: NavController) {
 
   }
+
+
+
 
 }

@@ -1,3 +1,19 @@
 page-home {
-
+    .parentConteiner{
+        width: 100%;
+        background-color:black;
+      }
+      .parentName{
+        padding: 3%;
+        color: aliceblue;
+        flex-direction: row;
+      }
+      ion-app.md {
+          background-color: darkslategray;
+          padding: 16px;
+      }
+      ion-app.ios{
+          background-color: darkslategray;
+          padding: 16px;
+      }
 }
